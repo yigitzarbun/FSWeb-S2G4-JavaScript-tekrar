@@ -73,7 +73,7 @@ console.log(CemberinAlani(15, pi));
 
 console.log(sayilar.length);
 
-	var ucetambolunenler, enkucuk, enbuyuk, ucebolunenlerintoplami, besyuzdenkucuksayilar, siralisayilar, tekraredensayilar;
+	var ucetambolunenler, enkucuk, enbuyuk, ucebolunenlerintoplami, besyuzdenkucuksayilar, siralisayilar, //tekraredensayilar;
 	
 	//3a çözümü
 
@@ -129,42 +129,28 @@ console.log(siralisayilar);
 	// Tekrar edilen sayıları ve kaç kere tekrar edildiğini kaydetmek için bir nesne tanımlamalısınız, bu görevi yapabilmek için en az 2 kere döngü yazmalısınız. 
 	// Birinci döngüde hangi sayının kaç kere tekrar edildiğini tespit edip, 2. döngüde stringi oluşturup verilen diziye aktarmalısınız.
 
-//sayilar dizisi sayilar2 dizisine kopyalandı.
-let sayilar2 = sayilar.slice();
-sayilar2.sort(function(a, b) {return a-b});
+	let tekraredensayilar = [];
+	let yeniSayilar = sayilar.slice();
+	yeniSayilar.sort(function(a,b) {return a-b});
+	
+	let obje = {};
+	
+	for (let i=0; i<yeniSayilar.length; i++){
+	  if(yeniSayilar[i] in obje){
+		obje[yeniSayilar[i]] += 1;
+	  } else {
+		obje[yeniSayilar[i]] = 1;
+	  } 
+	};
+	
+	
+	for (const [key, value] of Object.entries(obje)){
+	  if(value > 1){
+		tekraredensayilar.push(`${key} sayısı ${value} kere tekrar edilmiştir`)
+	  }
+	};
 
-//obje ve yeniDizi oluşturuldu.
-let obje ={
-};
-let yeniDizi = [];
-
-//sayilar2 dizisi içindeki tüm sayıların kaç defa tekrarlandığı obje içerisine yazılarak eklendi.
-sayilar2.forEach(key=> {
-	if(key in obje){
-		obje.key +=1;
-	} else {
-		obje.key = 1;
-	}
-});
-
-//obje içindeki tüm elemanlar sorudaki cümle formatında yeniDiziye eklendi.
-for (const [key, value] of Object.entries(obje)) {
-	if(value>1){
-	yeniDizi.push(`${key} sayısı ${value} kere tekrar edilmiştir`)
-}
-};
-
-/*
-for (let key in obje){
-
-}
-*/
-
-
-tekraredensayilar = yeniDizi;
-console.log(tekraredensayilar);
-
-
+	console.log(tekraredensayilar);
 
 
 
